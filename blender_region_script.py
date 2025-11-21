@@ -38,10 +38,10 @@ else:
 
     # Build a dict that can be copy-pasted into your 3DGS filtering script
     region = {
-        "bbox_min": [min_pt.x, min_pt.y, min_pt.z],
-        "bbox_max": [max_pt.x, max_pt.y, max_pt.z],
-        "center":  [center.x, center.y, center.z],
-        "mean":    [mean_pt.x, mean_pt.y, mean_pt.z],
+        "bbox_min": " ".join(str(v) for v in [min_pt.x, min_pt.y, min_pt.z]),
+        "bbox_max": " ".join(str(v) for v in [max_pt.x, max_pt.y, max_pt.z]),
+        "center":  " ".join(str(v) for v in [center.x, center.y, center.z]),
+        "mean":    " ".join(str(v) for v in [mean_pt.x, mean_pt.y, mean_pt.z]),
         "radius_bbox": float(radius_bbox),
         "radius_points": float(radius_points),
         "num_vertices": len(coords),
@@ -54,3 +54,4 @@ else:
     # (Optional) copy to clipboard for easy paste into another script
     bpy.context.window_manager.clipboard = "region = " + json.dumps(region, indent=2)
     print("Region info copied to clipboard.")
+
