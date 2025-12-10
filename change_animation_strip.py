@@ -7,8 +7,9 @@ from mathutils import Quaternion, Euler, Vector
 # -----------------------------------
 # Translation offsets for root bone location
 offset_x = 0.0
+offset_y = 0.0
 offset_z = 0.0
-USE_TRANSLATION = (offset_x != 0 or offset_z != 0)
+USE_TRANSLATION = (offset_x != 0 or offset_y != 0 or offset_z != 0)
 
 # -----------------------------------
 # Rotation mode options (used only if USE_TRANSLATION = False)
@@ -87,7 +88,10 @@ if USE_TRANSLATION:
         key.co[1] += offset_x
         key.handle_left.y += offset_x
         key.handle_right.y += offset_x
-
+    for key in fcurve_loc_y.keyframe_points:
+        key.co[1] += offset_y
+        key.handle_left.y += offset_y
+        key.handle_right.y += offset_y
     for key in fcurve_loc_z.keyframe_points:
         key.co[1] += offset_z
         key.handle_left.y += offset_z
